@@ -1,6 +1,6 @@
 ﻿# vim-clipimg
 
-Saves an image from clipboard to a file and creates an image link with given description for the current filetype.
+Saves an image from clipboard to a file and creates a link with given description for the current filetype.
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ Python Pillow package (https://github.com/python-pillow/Pillow).
 For Un*x like systems the application `xclip` will be used by default to copy
 the content from the system clipboard.
 
-MacOS X needs `pgppaste` from https://github.com/jcsalterego/pngpaste 
+MacOS X needs `pngpaste` from https://github.com/jcsalterego/pngpaste 
 
 ## Installing
 
@@ -36,7 +36,7 @@ file. The placeholder `%FULLFILENAME%` will be replaced by an escaped filename
 with complete path.
 
 - Win32: `""` (Python is used)
-- MacOS: `"pngpaste %FULLFILENAME"`
+- MacOS: `"pngpaste %FULLFILENAME%"`
 - Un*x:  `"xclip -selection clipboard -t image/png -o >%FULLFILENAME%"`
 
 
@@ -78,7 +78,7 @@ returning the filename.
 Example:
 
 ```vim
- let l:subst = { "[ \t\n*?{}`$\\/%#'\"|!<>.-]" : '' }
+ let g:clipimg_substitutes = { "[ \t\n*?{}`$\\/%#'\"|!<>.-]" : '' }
 ```
 
 ### g:clipimg_imgtags
@@ -104,7 +104,7 @@ instead of a string with placeholders returning the text:
 Example:
 
 ```vim
- let l:imgtags = { 'markdown' : '![%TITLE%](%RELFILENAME%)' }
+ let g:clipimg_imgtags = { 'markdown' : '![%TITLE%](%RELFILENAME%)' }
 ```
 
 ## Commands

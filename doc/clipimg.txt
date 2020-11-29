@@ -1,4 +1,4 @@
-﻿*clipimg.txt* Saves image from clipbard as file and creates an image link
+﻿*clipimg.txt* Saves image from clipbard as file and creates a link
 *clipimg*
 
 by Jan Stocker~
@@ -16,7 +16,7 @@ TOC                                                           *clipimg-contents*
 ==============================================================================
 INTRO                                                            *clipimg-intro*
 
-Saves an image from clipboard to a file and creates an image link with given
+Saves an image from clipboard to a file and creates a link with given
 description for the current filetype.
 
 ==============================================================================
@@ -28,7 +28,7 @@ Python Pillow package (https://github.com/python-pillow/Pillow).
 For Un*x like systems the application `xclip` will be used by default to copy
 the content from the system clipboard.
 
-MacOS X needs `pgppaste` from https://github.com/jcsalterego/pngpaste 
+MacOS X needs `pngpaste` from https://github.com/jcsalterego/pngpaste 
 
 ==============================================================================
 OPTIONS                                                        *clipimg-options*
@@ -44,7 +44,7 @@ file. The placeholder `%FULLFILENAME%` will be replaced by an escaped filename
 with complete path.
 
 Win32: `""` (Python is used)
-MacOS: `"pngpaste %FULLFILENAME"`
+MacOS: `"pngpaste %FULLFILENAME%"`
 Un*x:  `"xclip -selection clipboard -t image/png -o >%FULLFILENAME%"`
 
 ------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ returning the filename.
 
 Example:
 >
- let l:subst = { "[ \t\n*?{}`$\\/%#'\"|!<>.-]" : '' }
+ let g:clipimg_substitutes = { "[ \t\n*?{}`$\\/%#'\"|!<>.-]" : '' }
 <
 ------------------------------------------------------------------------------
                                                              *g:clipimg_imgtags*
@@ -105,7 +105,7 @@ instead of a string with placeholders returning the text:
 <
 Example:
 >
- let l:imgtags = { 'markdown' : '![%TITLE%](%RELFILENAME%)' }
+ let g:clipimg_imgtags = { 'markdown' : '![%TITLE%](%RELFILENAME%)' }
 <
 ==============================================================================
 COMMANDS                                                      *clipimg-commands*
